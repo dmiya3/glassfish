@@ -356,7 +356,7 @@ public class GlassfishNetworkListener extends GenericGrizzlyListener {
 
             /*
             * Set the server info.
-            * By default, the server info is taken from Version#getVersion.
+            * By default, the server info is taken from Version#getProductId.
             * However, customers may override it via the product.name system
             * property.
             * Some customers prefer not to disclose the server info
@@ -375,7 +375,7 @@ public class GlassfishNetworkListener extends GenericGrizzlyListener {
 
             if (isXPoweredByEnabled) {
                 xPoweredBy = "Servlet/6.0 JSP/3.1"
-                        + "(" + serverVersion
+                        + "(" + ((serverInfo == null || serverInfo.isEmpty()) ? Version.getProductId() : serverInfo)
                         + " Java/"
                         + System.getProperty("java.vm.vendor") + "/"
                         + System.getProperty("java.specification.version") + ")";
